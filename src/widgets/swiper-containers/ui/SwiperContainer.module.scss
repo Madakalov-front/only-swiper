@@ -1,0 +1,10 @@
+.swiper-containers {
+    height: 100%;
+    padding-block: toRem(60) toRem(14);
+
+    @include MQmin($tablet) {
+        border-left: toRem(1) solid var(--Black-blue-o01);
+        border-right: toRem(1) solid var(--Black-blue-o01);
+        padding-block: toRem(170) toRem(104);
+    }
+}

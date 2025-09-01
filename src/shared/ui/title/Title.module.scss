@@ -2,7 +2,33 @@
     font-size: toRem(20);
     font-weight: 700;
     line-height: 1.2;
-    @include MQmin($tablet-xl) {
+    color: var(--Black-blue);
+
+    @include MQmin($tablet) {
+        display: flex;
+        align-items: center;
         font-size: toRem(56);
+        column-gap: toRem(58);
+
+        &::before {
+            content: '';
+            display: block;
+            width: toRem(5);
+            height: clamp(0.8lh, 12vh, toRem(120));
+            background: linear-gradient(180deg, rgba(56, 119, 238, 1) 0%, rgba(239, 93, 168, 1) 100%);
+        }
+    }
+
+    @include MQmin($tablet-xl) {
+       column-gap: toRem(78);
+    }
+
+    // .title__content 
+    &__content {
+        max-width: toRem(124);
+
+        @include MQmin($tablet) {
+            max-width: toRem(354);
+        }
     }
 }
