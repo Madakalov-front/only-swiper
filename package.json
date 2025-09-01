@@ -20,7 +20,8 @@
     "homepage": "https://github.com/Madakalov-front/only-swiper#readme",
     "dependencies": {
         "react": "^19.1.1",
-        "react-dom": "^19.1.1"
+        "react-dom": "^19.1.1",
+        "swiper": "^11.2.10"
     },
     "devDependencies": {
         "@types/react": "^19.1.12",

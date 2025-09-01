@@ -3,8 +3,26 @@
     padding-block: toRem(60) toRem(14);
 
     @include MQmin($tablet) {
+        padding-block: toRem(170) toRem(104);
         border-left: toRem(1) solid var(--Black-blue-o01);
         border-right: toRem(1) solid var(--Black-blue-o01);
-        padding-block: toRem(170) toRem(104);
+        position: relative;
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+            height: toRem(1);
+            width: 100%;
+            background-color: var(--Black-blue-o01);
+            position: absolute;
+            top: 50%;
+            left: 50%;            
+        }
+        &::before {
+          transform: translate(-50%, -50%) rotate(90deg);
+        }
+        &::after {
+            transform: translate(-50%, -50%);
+        }
     }
 }
