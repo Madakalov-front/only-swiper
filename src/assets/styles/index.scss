@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+    color: inherit;
+}
+
+html {
+    text-size-adjust: 100%;
+    font-size: toRem(16);
+
+    @include MQmin($desktop) {
+        font-size: 0.833333vw;
+    }
+}
+
+body {
+    font-family: $def-font, sans-serif;
+}
+
+.container {
+    width: 100%;
+    padding-inline: toRem(20);
+    margin: 0 auto;
+    @include MQmin($tablet-m) {
+        padding-inline: toRem(40);
+    }
+
+    @include MQmin($tablet) {
+        padding-inline: toRem(80);
+
+    }
+
+    @include MQmin($tablet-xl) {
+        padding-inline: toRem(160);
+    }
+
+}
