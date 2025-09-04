@@ -7,3 +7,9 @@
         @content;
     }
 }
+
+@mixin MQmax($value) {
+     @media (max-width: $value) {
+        @content;
+    }
+}

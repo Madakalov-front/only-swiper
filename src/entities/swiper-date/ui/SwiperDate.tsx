@@ -7,6 +7,7 @@ import { useCirclePagination } from "../model/useCirclePagination";
 import { useMediaQuery } from "react-responsive";
 import clsx from "clsx";
 import * as styles from "./SwiperDate.module.scss";
+import { useAnimateSwiper } from "../model/useAnimateSwiper";
 
 export const SwiperDate = ({ data }: { data: CategoryHistoryType }) => {
     const {
@@ -22,6 +23,7 @@ export const SwiperDate = ({ data }: { data: CategoryHistoryType }) => {
     const { positionBullets, rotateCircle } = useCirclePagination({
         dataLength: data.length,
     });
+    const swiperCategoryRef = useAnimateSwiper(activeIndex);
 
     const isDesktopOrLaptop = useMediaQuery({
         query: "(min-width: 1224px)",
@@ -107,6 +109,7 @@ export const SwiperDate = ({ data }: { data: CategoryHistoryType }) => {
                         </div>
                     </Swiper>
                     <Swiper
+                        ref={swiperCategoryRef}
                         modules={[Virtual, Navigation]}
                         virtual
                         breakpoints={{
