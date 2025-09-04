@@ -4,7 +4,7 @@ import * as styles from './MainPage.module.scss';
 
 export const MainPage = () => {
     return (
-        <main className={''}>
+        <main className={styles['main-page']}>
             <div className="container">
                 <SwiperContainers />
             </div>

@@ -1,3 +1,6 @@
+@use "../../../node_modules/swiper/swiper.scss"; 
+@use '../../../node_modules/swiper/modules/pagination.scss';
+
 * {
     margin: 0;
     padding: 0;
@@ -20,11 +23,11 @@ body {
     min-height: 100vh;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: 100vw;
+    grid-template-rows: 1fr;
+    overflow-x: hidden;
+    color: var(--Black-blue);
 }
-
-
 
 .container {
     width: 100%;

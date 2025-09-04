@@ -27,14 +27,14 @@ export default {
                 use: 'ts-loader'
             },
             {
-                test: /\.module\.scss$/, // SCSS-модули
+                test: /\.module\.scss$/,
                 use: [
-                    "style-loader", // можно заменить на MiniCssExtractPlugin.loader для продакшена
+                    "style-loader",
                     {
                         loader: "css-loader",
                         options: {
                             modules: {
-                                localIdentName: "[name]__[local]--[hash:base64:5]", // Button__root--abc12
+                                localIdentName: "[name]__[local]--[hash:base64:5]",
                             },
                         },
                     },
@@ -52,7 +52,7 @@ export default {
                 ],
             },
             {
-                test: /\.scss$/, // обычные SCSS
+                test: /\.scss$/,
                 exclude: /\.module\.scss$/,
                 use: [
                     "style-loader",
@@ -71,10 +71,14 @@ export default {
                 ],
             },
             {
-                test: /\.(woff2?|ttf|eot|otf)$/, // поддержка woff, woff2, ttf, eot, otf
-                type: 'asset/resource',          // автоматически копирует файлы в output
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"] 
+            },
+            {
+                test: /\.(woff2?|ttf|eot|otf)$/,
+                type: 'asset/resource',
                 generator: {
-                    filename: 'fonts/[name][hash][ext]', // куда копировать в dist
+                    filename: 'fonts/[name][hash][ext]',
                 },
             },
 

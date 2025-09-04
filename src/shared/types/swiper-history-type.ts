@@ -1,6 +1,6 @@
 export type ContentDateHistoryType = {
     id: number;
-    date: string;
+    date: number;
     content: string;
     href: string;
 };
