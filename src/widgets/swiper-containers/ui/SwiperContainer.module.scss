@@ -1,7 +1,7 @@
 .swiper-containers {
     height: 100%;
     padding-block: toRem(60) toRem(14);
-
+    position: relative;
     overflow: hidden;
 
     @include MQmin($tablet) {
@@ -33,7 +33,7 @@
 
     :global(.swiper) {
         @include MQmin($tablet) {
-            margin-inline: toRem(80);
+            padding-inline: toRem(80);
         }
     }
 }

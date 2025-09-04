@@ -19,7 +19,6 @@ export const SwiperDate = ({ data }: { data: CategoryHistoryType }) => {
         handleSlideChange,
     } = useSwiperDates(data);
 
-   
     const { positionBullets, rotateCircle } = useCirclePagination({
         dataLength: data.length,
     });
@@ -90,7 +89,8 @@ export const SwiperDate = ({ data }: { data: CategoryHistoryType }) => {
                             <div
                                 className={styles["swiper-date-actions__count"]}
                             >
-                                {(activeIndex + 1).toString().padStart(2, '0')}/{data.length.toString().padStart(2, '0')}
+                                {(activeIndex + 1).toString().padStart(2, "0")}/
+                                {data.length.toString().padStart(2, "0")}
                             </div>
                             <button
                                 className={clsx(
@@ -107,11 +107,23 @@ export const SwiperDate = ({ data }: { data: CategoryHistoryType }) => {
                         </div>
                     </Swiper>
                     <Swiper
-                        modules={[Virtual]}
+                        modules={[Virtual, Navigation]}
                         virtual
-                        slidesPerView={3}
-                        spaceBetween={80}
-                        className={styles['swiper-category']}
+                        breakpoints={{
+                            1180: {
+                                slidesPerView: 3,
+                                spaceBetween: 80,
+                            },
+                            0: {
+                                slidesPerView: 1.5,
+                                spaceBetween: 25,
+                            },
+                        }}
+                        className={styles["swiper-category"]}
+                        navigation={{
+                            nextEl: `.${styles["swiper-category"]} .swiper-button-next`,
+                            prevEl: `.${styles["swiper-category"]} .swiper-button-prev`,
+                        }}
                     >
                         {activeSlides.map((slide) => (
                             <SwiperSlide key={slide.id} virtualIndex={slide.id}>
@@ -121,6 +133,20 @@ export const SwiperDate = ({ data }: { data: CategoryHistoryType }) => {
                                 </div>
                             </SwiperSlide>
                         ))}
+                        <div className={styles["swiper-category__nav-btns"]}>
+                            <button
+                                className={clsx(
+                                    styles["swiper-category__nav-btn"],
+                                    "swiper-button-prev"
+                                )}
+                            ></button>
+                            <button
+                                className={clsx(
+                                    styles["swiper-category__nav-btn"],
+                                    "swiper-button-next"
+                                )}
+                            ></button>
+                        </div>
                     </Swiper>
                 </>
             ) : (

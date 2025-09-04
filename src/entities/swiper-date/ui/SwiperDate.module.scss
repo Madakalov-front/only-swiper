@@ -3,9 +3,17 @@
 .swiper-date {
     height: toRem(615);
 
+    &:global(.swiper) {
+        position: initial;
+    }
+
     @include MQmin($tablet) {
         margin-top: toRem(-125);
         margin-bottom: toRem(56);
+
+        &:global(.swiper) {
+            position: relative;
+        }
     }
 
     &-actions {
@@ -16,6 +24,9 @@
         display: grid;
         gap: toRem(20);
 
+        @include MQmin($tablet) {
+            left: toRem(80);
+        }
 
         &__btn {
             width: toRem(50);
@@ -57,9 +68,14 @@
         align-items: center;
         justify-content: center;
         column-gap: 1ch;
-        font-size: toRem(200);
         font-weight: 700;
-        letter-spacing: toRem(-4);
+        font-size: toRem(56);
+        letter-spacing: toRem(-1.12);
+
+        @include MQmin($tablet) {
+            font-size: toRem(200);
+            letter-spacing: toRem(-4);
+        }
 
         span {
             &:first-child {
@@ -73,66 +89,87 @@
     }
 
     :global(.swiper-pagination) {
-        position: absolute;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%);
-        width: toRem(530) !important;
-        height: toRem(530);
-        border-radius: 50%;
-        border: toRem(1) solid var(--Black-blue-o02);
-    }
-
-    :global(.swiper-pagination-bullet) {
-        margin: 0 !important;
-        position: absolute;
-        left: calc(50% - toRem(6));
-        top: calc(50% - toRem(6));
-        width: toRem(12);
-        height: toRem(12);
-        background-color: transparent;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: toRem(20);
-        line-height: 1.5;
-
-        &::after {
-            content: attr(data-category);
-            font-weight: 700;
+        column-gap: toRem(10);
+        @include MQmin($tablet) {
+            display: block;
             position: absolute;
-            top: 50%;
-            left: 100%;
-            opacity: 0;
-            visibility: hidden;
-            transform: translate(toRem(48), -50%);
-            transition-property: opacity, visibility;
-            transition-duration: var(--duration);
-            transition-timing-function: var(--ease);
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%);
+            width: toRem(530) !important;
+            height: toRem(530);
+            border-radius: 50%;
+            border: toRem(1) solid var(--Black-blue-o02);
         }
 
-        span {
-            flex-shrink: 0;
+    }
+
+    :global(.swiper-pagination-bullet) {
+        width: toRem(6);
+        height: toRem(6);
+        border-radius: 50%;
+        background-color: var(--Black-blue);
+        margin: 0 !important;
+        @include MQmin($tablet) {
+            position: absolute;
+            left: calc(50% - toRem(6));
+            top: calc(50% - toRem(6));
+            width: toRem(12);
+            height: toRem(12);
+            background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: toRem(6);
-            height: toRem(6);
-            border: toRem(1) solid var(--Black-blue);
-            border-radius: 50%;
-            background-color: var(--Black-blue);
-            transition-property: background-color, border-color, width, height;
-            transition-duration: var(--duration);
-            transition-timing-function: var(--ease);
+            font-size: toRem(20);
+            line-height: 1.5;
+            opacity: 1;
+        }
 
-            &::before {
-                content: attr(data-count);
+        @include MQmin($tablet) {
+            &::after {
+                content: attr(data-category);
+                font-weight: 700;
+                position: absolute;
+                top: 50%;
+                left: 100%;
                 opacity: 0;
                 visibility: hidden;
-                transform: scale(0);
-                transition-property: opacity, visibility, transform;
+                transform: translate(toRem(48), -50%);
+                transition-property: opacity, visibility;
                 transition-duration: var(--duration);
                 transition-timing-function: var(--ease);
+            }
+        }
+
+        span {
+            display: none;
+
+            @include MQmin($tablet) {
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: toRem(6);
+                height: toRem(6);
+                border: toRem(1) solid var(--Black-blue);
+                border-radius: 50%;
+                background-color: var(--Black-blue);
+                transition-property: background-color, border-color, width, height;
+                transition-duration: var(--duration);
+                transition-timing-function: var(--ease);
+
+                &::before {
+                    content: attr(data-count);
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: scale(0);
+                    transition-property: opacity, visibility, transform;
+                    transition-duration: var(--duration);
+                    transition-timing-function: var(--ease);
+                }
             }
         }
 
@@ -205,6 +242,61 @@
             -webkit-box-orient: vertical;
             line-clamp: 3;
             box-orient: vertical;
+        }
+    }
+
+    // .swiper-category__nav-btns
+
+    &__nav-btns {
+        display: none;
+
+        @include MQmin($tablet) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: toRem(1);
+            width: 100%;
+            z-index: 10;
+            padding-inline: toRem(20);
+        }
+    }
+
+    // .swiper-category__nav-btn
+
+    &__nav-btn {
+        display: none;
+
+        @include MQmin($tablet) {
+            display: block;
+            width: toRem(40);
+            height: toRem(40);
+            border-radius: 50%;
+            background-color: var(--light);
+            box-shadow: 0 0 toRem(15) rgba(56, 119, 238, 0.10);
+            border: 0;
+            opacity: 1;
+            visibility: visible;
+            transition-property: opacity, visibility;
+            transition-duration: var(--duration);
+            transition-timing-function: var(--ease);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='12' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1 1L6 6L1 11' stroke='%233877EE' stroke-width='2'/%3E%3C/svg%3E");
+            background-repeat: no-repeat no-repeat;
+            background-position: center center;
+            background-size: toRem(8);
+            cursor: pointer;
+
+            &:first-of-type {
+                rotate: 180deg;
+            }
+        }
+
+        &:global(.swiper-button-disabled) {
+            opacity: 0;
+            visibility: hidden;
         }
     }
 }
